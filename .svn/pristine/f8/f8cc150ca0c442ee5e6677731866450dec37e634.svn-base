@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteRule ^login/?$  app.login.php   [NC]
+RewriteRule ^home/?$  app.home.php   [NC]
+
+</IfModule>

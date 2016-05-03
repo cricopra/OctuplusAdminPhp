@@ -1,0 +1,79 @@
+<?php
+
+include_once(dirname(__FILE__) . '/../config/config.php');
+include_once(dirname(__FILE__) . '/../init.php');
+
+class Servicio extends RouteController {
+
+    public function executeIndex() {
+        try {
+            global $smarty;
+            
+            $rcTrabajadores = ApiTrabajador::getByUsuario(array(), FALSE);
+            $js_files = array(_APP_JS_DIR_ . 'servicio.js');
+            
+            $smarty->assign(array(
+                'JS_FILES' => $js_files,
+                'TRABAJADORES' => array_key_exists('trabajadores', $rcTrabajadores) ? $rcTrabajadores['trabajadores'] : array(),
+                'ESTADOS' => array(
+                    SRV_ACTIVO => SRV_ACTIVO_LBL,
+                    SRV_INACTIVO => SRV_INACTIVO_LBL,
+                    SRV_INICIADO => SRV_INICIADO_LBL,
+                    SRV_TERMINADO => SRV_TERMINADO_LBL,
+                    SRV_ENTREGADO => SRV_ENTREGADO_LBL
+                )
+            ));
+            
+            $smarty->display(_APP_TPL_DIR_ . 'servicio.tpl');
+        } catch (Exception $e) {
+            Tools::ThrowError($e);
+        }
+    }
+    
+    public function executeActualizarEstado(){
+        try {
+            Tools::CheckSession();
+            
+            return ApiServicio::actualizarEstado(array(
+                'id' => Tools::GetValue('Codigo', ''),
+                'estado' => Tools::GetValue('Estado', '')
+            ));
+        } catch (Exception $e) {
+            Tools::ThrowError($e);
+        }
+    }
+    
+    public function executeReasignar(){
+        try {
+            Tools::CheckSession();
+            
+            return ApiServicio::reasignar(array(
+                'id' => Tools::GetValue('Codigo', ''),
+                'idTrabajador' => Tools::GetValue('Trabajador', INT_NULL)
+            ));
+        } catch (Exception $e) {
+            Tools::ThrowError($e);
+        }
+    }
+    
+    public function executeFiltrar(){
+        try {
+            Tools::CheckSession();
+            
+            return ApiServicio::filtrar(array(
+                'fecha' => Tools::GetValue('Fecha', ''),
+                'idTrabajador' => Tools::GetVal(Tools::GetValue('Trabajador', INT_NULL), INT_NULL),
+                'estado' => Tools::GetValue('Estado', ''),
+                'placa' => Tools::GetValue('Placa', ''),
+                'documento' => Tools::GetValue('Documento', '')
+            ));
+        } catch (Exception $e) {
+            Tools::ThrowError($e);
+        }
+    }
+}
+
+$objServicio = new Servicio();
+$sbAction = Tools::GetValue('action');
+print($objServicio->execute($objServicio, $sbAction));
+?>

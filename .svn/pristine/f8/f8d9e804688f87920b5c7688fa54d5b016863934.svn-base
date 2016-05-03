@@ -1,0 +1,108 @@
+/*App*/
+body{
+    padding-top: 50px;
+}
+
+.t-right{
+    text-align: right;
+}
+
+.t-left{
+    text-align: left;
+}
+
+.t-center{
+    text-align: center;
+}
+
+.f-left{
+    float: left;
+}
+
+.f-right{
+    float: right;
+}
+
+.navbar-brand img{
+    max-height: 100%;
+}
+
+form.app-form{
+    display: none;
+    opacity: 0;
+}
+
+/*Navbar*/
+.dropdown-menu li:hover a,
+.nav-sidebar li:hover a{
+    background: #0065A4;
+    color: #fff;
+}
+
+.nav.navbar-nav > li:hover > a{
+    text-shadow: 1px 0px 7px #fff;
+}
+
+/* Side Bar */
+.sidebar {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #eee;
+        border-right: 2px solid #bbb;
+    }
+}
+
+/*Side Bar Nav*/
+.nav-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > a {
+    padding: 6px 5px 6px 10px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+
+/*Main Content*/
+.main {
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+.main .page-header {
+    margin-top: 0;
+}
+
+/*jQuery UI*/
+.fix-datepicker input[data-type="datepicker"],
+.fix-timepicker input[data-type="timepicker"]{
+    width: 85%;
+    max-width: 85%;
+    display: inline-block;
+}
+
+/*Servicio*/
+.table-acciones td{
+    padding: 2px;
+}

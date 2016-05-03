@@ -1,0 +1,94 @@
+{include file="_css_js_includes.tpl"}
+<div id="servicio" class="app-form">
+    <div class="container-fluid">
+        <form class="form-horizontal" id="frmServicio">
+            <input type="hidden" id="txtCodigo" data-source="id" />
+            <h3 class="page-header">Servicios</h3>
+            <div class="row fix-datepicker">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Fecha</label>
+                        <div class="col-lg-8">
+                            <input type="text" id="txtFechaCreacion" name="txtFechaCreacion" value="{$DATE_NOW}" data-type="datepicker" class="form-control" readonly="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Trabajador</label>
+                        <div class="col-lg-8">
+                            <select id="slTrabajador" name="slTrabajador" class="form-control">
+                                <option value="">Todos</option>
+                                {foreach from=$TRABAJADORES item=trabajador}
+                                    <option value="{$trabajador.id}">{$trabajador.nombres} {$trabajador.apellidos}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Estado</label>
+                        <div class="col-lg-8">
+                            <select id="slEstado" name="slEstado" class="form-control">
+                                <option value="">Todos</option>
+                                {foreach from=$ESTADOS key=id item=desc}
+                                    <option value="{$id}">{$desc}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Placa</label>
+                        <div class="col-lg-8">
+                            <input type="text" id="txtPlaca" name="txtPlaca" maxlength="10" placeholder="Placa" class="form-control" data-validation-engine="validate[funcCall[$.invalidChar]]" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Documento</label>
+                        <div class="col-lg-8">
+                            <input type="text" id="txtDocumento" name="txtDocumento" maxlength="10" placeholder="Documento" class="form-control" data-validation-engine="validate[funcCall[$.invalidChar]]" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">            
+                <div class="col-lg-12 t-center">
+                    <button type="button" id="btnSubmit" class="btn btn-primary">Buscar</button>
+                    <button type="reset" id="btnReset" class="btn btn-default">Limpiar</button>
+                </div>
+            </div>
+        </form>
+        <br/>
+        <div id="datagrid-servicio">
+            <table id="tb-datagrid" class="table table-bordered table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false">ID</th>
+                        <th data-column-id="fechacreacion" data-sortable="false">Fecha</th>
+                        <th data-column-id="horacreacion" data-sortable="false">Hora</th>
+                        <th data-column-id="placa" data-sortable="false">Placa</th>
+                        <th data-column-id="tipovehiculo" data-sortable="false">Veh&iacute;culo</th>
+                        <th data-column-id="documento" data-sortable="false">Documento</th>
+                        <th data-column-id="cliente" data-sortable="false">Cliente</th>
+                        <th data-column-id="celular" data-sortable="false" data-visible="false">Celular</th>
+                        <th data-column-id="trabajador" data-sortable="false">Trabajador</th>
+                        <th data-column-id="valor" data-sortable="false" data-formatter="valor">Valor</th>
+                        <th data-column-id="estado" data-sortable="false" data-formatter="estado">Estado</th>
+                        <th data-column-id="productos" data-sortable="false" data-formatter="productos" class="commands">Productos</th>
+                        <th data-column-id="commands" data-sortable="false" data-formatter="commands" class="commands">Opciones</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

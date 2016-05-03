@@ -1,0 +1,10 @@
+<?php
+define('__APP_BASE_URI__', '/PHP/OctoplusAdminPHP/');
+define('_APP_NAME_', 'Octoplus Admin');
+
+define("_SERVER_", "localhost");
+define("_PORT_", "30658");
+define("_JAVA_DIRECTORY_", "OctoplusWSJava");
+define("_JAVA_DIRECTORY_NS_", "webresources");
+define("_WEB_SERVICE_", "service/invoke");
+?>

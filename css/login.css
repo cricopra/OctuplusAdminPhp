@@ -1,0 +1,8 @@
+body{
+    background: transparent url(../images/bg_login.png) no-repeat scroll 0 0;
+}
+
+img.logo{
+    max-width: 50%;
+    margin: 20px auto;
+}
